@@ -1,3 +1,4 @@
+node_modules/
 lychee/
 playwright-report/
 test-results/
