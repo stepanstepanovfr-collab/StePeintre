@@ -1,6 +1,8 @@
 {
   "recommendations": [
     "github.vscode-pull-request-github",
+    "github.copilot",
+    "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ms-playwright.playwright",
     "ritwickdey.liveserver"
