@@ -26,9 +26,11 @@ Les images temporaires sont :
 - `assets/chantier-transformation.png`
 - `assets/chantier-transformation.jpg`
 - `assets/chantier-transformation-card.jpg`
+- `assets/chantier-transformation-mobile.jpg`
 - `assets/realisation-salon.png`
 - `assets/realisation-salon.jpg`
 - `assets/realisation-salon-card.jpg`
+- `assets/realisation-salon-mobile.jpg`
 - `assets/realisation-facade.png`
 - `assets/realisation-facade.jpg`
 - `assets/realisation-facade-card.jpg`

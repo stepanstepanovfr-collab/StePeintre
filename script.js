@@ -60,6 +60,8 @@ function setupLoader() {
 }
 
 function setupSplitText() {
+  if (window.matchMedia("(max-width: 760px)").matches) return;
+
   const targets = document.querySelectorAll("h1");
 
   targets.forEach((target) => {
@@ -79,6 +81,7 @@ function setupSplitText() {
 
 function setupTiltCards() {
   if (reduceMotion) return;
+  if (window.matchMedia("(max-width: 900px)").matches) return;
 
   const cards = document.querySelectorAll(
     ".service-card, .portfolio-card, .price-card, .review-card, .trust-item, .metric, .signature-card, .timeline-step, .progress-panel, .contact-copy"

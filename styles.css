@@ -2274,7 +2274,23 @@ h1 .word-split > span {
   }
 
   .ambient-after {
+    display: none;
     clip-path: inset(0 calc((1 - var(--progress)) * 92%) 0 0);
+  }
+
+  .bento-card,
+  .bento-section,
+  .site-header,
+  .site-nav {
+    backdrop-filter: none;
+  }
+
+  .grain,
+  .precision-lines,
+  .light-wash,
+  .ambient-wall,
+  .roller-path {
+    display: none;
   }
 
   .ambient-wall {
