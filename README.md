@@ -8,6 +8,8 @@ Site vitrine statique premium pour une activité de peintre en bâtiment en Norm
 - `styles.css` : identité visuelle, responsive, animations et scène de chantier.
 - `script.js` : progression au scroll, menu mobile, slider avant/après, compteurs et formulaire.
 - `assets/` : images temporaires remplaçables.
+- `robots.txt`, `sitemap.xml`, `site.webmanifest` : fichiers SEO et navigateur.
+- `.github/workflows/` : publication GitHub Pages, qualité, Lighthouse, CodeQL.
 
 ## Modifier les contenus
 
@@ -37,3 +39,25 @@ Le formulaire bloque l'envoi réel pour l'instant et affiche un message de démo
 ## Lancer le site
 
 Ouvrez simplement `index.html` dans un navigateur. Aucun build ni serveur n'est nécessaire.
+
+## Qualité automatique
+
+Les outils gratuits branchés sur GitHub Actions :
+
+- Prettier : formatage.
+- ESLint : erreurs JavaScript.
+- Stylelint : erreurs CSS.
+- HTMLHint : validation HTML.
+- Playwright : tests desktop/mobile.
+- Pa11y CI : accessibilité WCAG.
+- Lighthouse CI : performance, SEO, accessibilité, bonnes pratiques.
+- Lychee : vérification des liens.
+- CodeQL et Dependabot : sécurité.
+
+Commandes utiles :
+
+```bash
+npm run quality
+npm run a11y
+npm test
+```

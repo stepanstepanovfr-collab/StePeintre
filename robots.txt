@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stepanstepanovfr-collab.github.io/StePeintre/sitemap.xml

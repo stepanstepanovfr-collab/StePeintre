@@ -28,3 +28,24 @@ test("quote form confirmation appears", async ({ page }) => {
 
   await expect(page.getByText(/Demande prête/)).toBeVisible();
 });
+
+test("seo metadata and crawl files are available", async ({ page, request }) => {
+  await page.goto("/");
+
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://stepanstepanovfr-collab.github.io/StePeintre/"
+  );
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    /https:\/\/stepanstepanovfr-collab\.github\.io\/StePeintre\/assets\/realisation-salon\.jpg/
+  );
+
+  const robots = await request.get("/robots.txt");
+  expect(robots.ok()).toBe(true);
+  expect(await robots.text()).toContain("Sitemap:");
+
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.ok()).toBe(true);
+  expect(await sitemap.text()).toContain("https://stepanstepanovfr-collab.github.io/StePeintre/");
+});
