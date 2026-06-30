@@ -1,0 +1,18 @@
+{
+  "name": "stepeintre",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine premium StePeintre.",
+  "scripts": {
+    "format": "prettier --write \"**/*.{html,css,js,json,md,yml}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,md,yml}\"",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "serve": "npx http-server . -p 4173 -a 127.0.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "http-server": "^14.1.1",
+    "prettier": "^3.6.0"
+  }
+}
