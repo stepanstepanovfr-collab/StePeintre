@@ -8,6 +8,7 @@ const progressText = document.querySelector("[data-progress-text]");
 const stageLabel = document.querySelector("[data-stage-label]");
 const floatingCta = document.querySelector(".floating-cta");
 const loader = document.querySelector("[data-loader]");
+const sectionAnchors = document.querySelectorAll("main section[id]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
@@ -48,13 +49,13 @@ function setupLoader() {
 
   const finish = () => {
     document.body.classList.add("is-loaded");
-    window.setTimeout(() => loader.remove(), reduceMotion ? 20 : 850);
+    window.setTimeout(() => loader.remove(), reduceMotion ? 20 : 520);
   };
 
   if (document.readyState === "complete") {
-    window.setTimeout(finish, reduceMotion ? 0 : 900);
+    window.setTimeout(finish, reduceMotion ? 0 : 420);
   } else {
-    window.addEventListener("load", () => window.setTimeout(finish, reduceMotion ? 0 : 900), { once: true });
+    window.addEventListener("load", () => window.setTimeout(finish, reduceMotion ? 0 : 420), { once: true });
   }
 }
 
@@ -80,7 +81,7 @@ function setupTiltCards() {
   if (reduceMotion) return;
 
   const cards = document.querySelectorAll(
-    ".service-card, .portfolio-card, .price-card, .review-card, .trust-item, .metric, .signature-card"
+    ".service-card, .portfolio-card, .price-card, .review-card, .trust-item, .metric, .signature-card, .timeline-step, .progress-panel, .contact-copy"
   );
 
   cards.forEach((card) => {
@@ -140,12 +141,51 @@ function setupNavigation() {
   });
 
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+    link.addEventListener("click", () => {
+      nav.querySelectorAll("a").forEach((navLink) => {
+        const isActive = navLink === link;
+        navLink.classList.toggle("is-active", isActive);
+        if (isActive) {
+          navLink.setAttribute("aria-current", "page");
+        } else {
+          navLink.removeAttribute("aria-current");
+        }
+      });
+      closeMenu();
+    });
   });
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMenu();
   });
+}
+
+function setupActiveNavigation() {
+  if (!nav || !sectionAnchors.length || !("IntersectionObserver" in window)) return;
+
+  const navLinks = [...nav.querySelectorAll('a[href^="#"]')];
+  const setActiveLink = (id) => {
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveLink(entry.target.id);
+      });
+    },
+    { rootMargin: "-35% 0px -50% 0px", threshold: 0.01 }
+  );
+
+  sectionAnchors.forEach((section) => observer.observe(section));
 }
 
 function setupComparison() {
@@ -235,6 +275,7 @@ setupLoader();
 setupSplitText();
 setupReveals();
 setupNavigation();
+setupActiveNavigation();
 setupComparison();
 setupCounters();
 setupForm();
