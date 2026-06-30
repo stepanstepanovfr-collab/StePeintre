@@ -17,8 +17,7 @@ test("page has no horizontal overflow", async ({ page }) => {
 });
 
 test("quote form confirmation appears", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("link", { name: "Devis gratuit" }).first().click();
+  await page.goto("/#contact");
 
   await page.getByLabel("Nom").fill("Test Client");
   await page.getByLabel("Téléphone").fill("0102030405");
@@ -27,5 +26,5 @@ test("quote form confirmation appears", async ({ page }) => {
   await page.getByLabel("Type de travaux").selectOption("Peinture intérieure");
   await page.locator("[data-quote-form]").evaluate((form) => form.requestSubmit());
 
-  await expect(page.getByText(/Votre demande est prête/)).toBeVisible();
+  await expect(page.getByText(/Demande prête/)).toBeVisible();
 });

@@ -8,7 +8,6 @@ const progressText = document.querySelector("[data-progress-text]");
 const stageLabel = document.querySelector("[data-stage-label]");
 const floatingCta = document.querySelector(".floating-cta");
 const loader = document.querySelector("[data-loader]");
-const kineticWords = document.querySelectorAll(".kinetic-word");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
@@ -31,10 +30,6 @@ function updateScrollProgress() {
     const stages = ["Protection", "Préparation", "Sous-couche", "Finition", "Livraison propre"];
     const stageIndex = Math.min(stages.length - 1, Math.floor(safeProgress * stages.length));
     stageLabel.textContent = stages[stageIndex];
-
-    kineticWords.forEach((word, index) => {
-      word.classList.toggle("is-active", index === Math.min(kineticWords.length - 1, stageIndex));
-    });
   }
 
   if (liveSection) {
@@ -85,7 +80,7 @@ function setupTiltCards() {
   if (reduceMotion) return;
 
   const cards = document.querySelectorAll(
-    ".service-card, .portfolio-card, .price-card, .review-card, .story-card, .trust-item"
+    ".service-card, .portfolio-card, .price-card, .review-card, .trust-item, .metric, .signature-card"
   );
 
   cards.forEach((card) => {
@@ -216,7 +211,7 @@ function setupForm() {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    note.textContent = "Votre demande est prête. Branchez ici votre email, votre CRM ou un service de formulaire.";
+    note.textContent = "Demande prête. Branchez ici votre email, votre CRM ou un service de formulaire.";
   });
 }
 

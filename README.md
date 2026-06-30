@@ -22,10 +22,13 @@ Site vitrine statique premium pour une activité de peintre en bâtiment en Norm
 Les images temporaires sont :
 
 - `assets/chantier-transformation.png`
+- `assets/chantier-transformation.jpg`
 - `assets/realisation-salon.png`
+- `assets/realisation-salon.jpg`
 - `assets/realisation-facade.png`
+- `assets/realisation-facade.jpg`
 
-Pour les remplacer, gardez les mêmes noms de fichiers ou mettez à jour les chemins dans `index.html` et `styles.css`.
+Le site utilise les versions `.jpg`, plus légères pour GitHub Pages. Pour les remplacer, gardez les mêmes noms de fichiers ou mettez à jour les chemins dans `index.html` et `styles.css`.
 
 ## Formulaire
 
