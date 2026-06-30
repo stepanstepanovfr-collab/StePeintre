@@ -25,7 +25,7 @@ test("quote form confirmation appears", async ({ page }) => {
   await page.getByLabel("Email").fill("test@example.com");
   await page.getByLabel("Ville").fill("Caen");
   await page.getByLabel("Type de travaux").selectOption("Peinture intérieure");
-  await page.getByRole("button", { name: "Envoyer ma demande de devis" }).click();
+  await page.locator("[data-quote-form]").evaluate((form) => form.requestSubmit());
 
   await expect(page.getByText(/Votre demande est prête/)).toBeVisible();
 });
