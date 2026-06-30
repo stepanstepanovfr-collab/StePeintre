@@ -29,6 +29,16 @@ test("quote form confirmation appears", async ({ page }) => {
   await expect(page.getByText(/Demande prête/)).toBeVisible();
 });
 
+test("quote form shows accessible validation feedback", async ({ page }) => {
+  await page.goto("/#contact");
+
+  await page.locator("[data-quote-form]").evaluate((form) => form.requestSubmit());
+
+  await expect(page.getByText(/Complétez les champs indiqués/)).toBeVisible();
+  await expect(page.getByLabel("Nom")).toHaveAttribute("aria-invalid", "true");
+  await expect(page.getByText("Nom est obligatoire.")).toBeVisible();
+});
+
 test("seo metadata and crawl files are available", async ({ page, request }) => {
   await page.goto("/");
 

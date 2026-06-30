@@ -62,6 +62,8 @@
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#accueil">Aller au contenu principal</a>
+
     <div class="intro-loader" aria-hidden="true" data-loader>
       <div class="loader-brand">StePeintre</div>
       <div class="loader-line"><span></span></div>
@@ -510,7 +512,13 @@
           </ul>
         </div>
 
-        <form class="quote-form bento-card reveal" aria-label="Formulaire de demande de devis" data-quote-form>
+        <form
+          class="quote-form bento-card reveal"
+          aria-label="Formulaire de demande de devis"
+          aria-describedby="form-note"
+          data-quote-form
+          novalidate
+        >
           <label>Nom<input name="name" type="text" autocomplete="name" required /></label>
           <label>Téléphone<input name="phone" type="tel" autocomplete="tel" required /></label>
           <label>Email<input name="email" type="email" autocomplete="email" required /></label>
@@ -539,7 +547,7 @@
             <span class="button-icon" aria-hidden="true"></span>
             Envoyer ma demande de devis
           </button>
-          <p class="form-note" data-form-note aria-live="polite"></p>
+          <p class="form-note" id="form-note" data-form-note aria-live="polite"></p>
         </form>
       </section>
     </main>

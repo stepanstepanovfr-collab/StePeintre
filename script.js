@@ -246,9 +246,79 @@ function setupForm() {
   const note = document.querySelector("[data-form-note]");
   if (!form || !note) return;
 
+  const controls = [...form.querySelectorAll("input, select, textarea")];
+  const requiredControls = controls.filter((control) => control.hasAttribute("required"));
+  const getFieldName = (control) => control.closest("label")?.childNodes[0]?.textContent.trim() || "Ce champ";
+
+  const setFieldError = (control, message = "") => {
+    const label = control.closest("label");
+    if (!label) return;
+
+    let error = label.querySelector(".field-error");
+    if (!error) {
+      error = document.createElement("span");
+      error.className = "field-error";
+      error.id = `${control.name || "field"}-error`;
+      label.append(error);
+    }
+
+    if (message) {
+      control.setAttribute("aria-invalid", "true");
+      control.setAttribute("aria-describedby", error.id);
+      error.textContent = message;
+      error.hidden = false;
+      label.classList.add("has-error");
+    } else {
+      control.removeAttribute("aria-invalid");
+      control.removeAttribute("aria-describedby");
+      error.textContent = "";
+      error.hidden = true;
+      label.classList.remove("has-error");
+    }
+  };
+
+  const validateControl = (control) => {
+    const value = control.value.trim();
+    let message = "";
+
+    if (control.hasAttribute("required") && !value) {
+      message = `${getFieldName(control)} est obligatoire.`;
+    } else if (control.type === "email" && value && !control.validity.valid) {
+      message = "Indiquez une adresse email valide.";
+    }
+
+    setFieldError(control, message);
+    return !message;
+  };
+
+  controls.forEach((control) => {
+    control.addEventListener("input", () => {
+      if (control.getAttribute("aria-invalid") === "true") validateControl(control);
+      if (requiredControls.every((field) => field.value.trim())) {
+        note.classList.remove("is-error");
+      }
+    });
+
+    control.addEventListener("blur", () => validateControl(control));
+  });
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    const validationResults = controls.map(validateControl);
+    const isValid = validationResults.every(Boolean);
+    if (!isValid) {
+      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      note.textContent = "Complétez les champs indiqués pour envoyer votre demande.";
+      note.classList.add("is-error");
+      note.classList.remove("is-success");
+      firstInvalid?.focus();
+      return;
+    }
+
     note.textContent = "Demande prête. Branchez ici votre email, votre CRM ou un service de formulaire.";
+    note.classList.add("is-success");
+    note.classList.remove("is-error");
   });
 }
 
