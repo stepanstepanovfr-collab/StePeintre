@@ -9,7 +9,7 @@ module.exports = defineConfig({
     trace: "on-first-retry"
   },
   webServer: {
-    command: "npx http-server . -p 4173 -a 127.0.0.1",
+    command: "npm run serve",
     url: "http://127.0.0.1:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 30 * 1000

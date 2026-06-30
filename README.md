@@ -1,68 +1,59 @@
 # StePeintre
 
-Site vitrine statique premium pour une activité de peintre en bâtiment en Normandie.
+Site vitrine premium pour StePeintre, peintre en bâtiment en Normandie.
 
-## Structure
+## Stack
 
-- `index.html` : contenu du site, sections, textes, formulaire et SEO.
-- `styles.css` : identité visuelle, responsive, animations et scène de chantier.
-- `script.js` : progression au scroll, menu mobile, slider avant/après, compteurs et formulaire.
-- `assets/` : images temporaires remplaçables.
-- `robots.txt`, `sitemap.xml`, `site.webmanifest` : fichiers SEO et navigateur.
-- `.github/workflows/` : publication GitHub Pages, qualité, Lighthouse, CodeQL.
+- Next.js 14 avec export statique.
+- TypeScript.
+- Tailwind CSS.
+- Framer Motion pour les animations fluides.
+- Playwright, Pa11y, Lighthouse CI, ESLint, Stylelint et Prettier pour la qualité.
+
+## Sections
+
+- Hero premium avec CTA appel, WhatsApp et devis.
+- Services : murs, plafonds, rénovation, finitions.
+- Avant / Après interactif.
+- Processus de chantier.
+- Galerie de réalisations.
+- Raisons de choisir StePeintre.
+- Avis clients.
+- Zone d'intervention en Normandie.
+- Formulaire de demande de devis.
+- Footer avec mentions légales.
 
 ## Modifier les contenus
 
-- Textes principaux : éditer les titres, paragraphes et boutons dans `index.html`.
-- Tarifs : section `id="tarifs"` dans `index.html`.
-- Coordonnées : section `id="contact"` dans `index.html`.
-- Services : cartes dans la section `id="services"`.
-- Avis clients : section `id="avis"`. Les avis actuels sont des placeholders.
+Les textes, coordonnées, statistiques, services, avis, zones et images se trouvent dans `data/site.ts`.
 
-## Remplacer les photos
+Images et logo :
 
-Les images temporaires sont :
+- Logo : `public/assets/stepeintre-logo.svg`
+- Galerie et avant/après : `public/assets/*.jpg`
+- Favicon : `public/assets/favicon.svg`
 
-- `assets/chantier-transformation.png`
-- `assets/chantier-transformation.jpg`
-- `assets/chantier-transformation-card.jpg`
-- `assets/chantier-transformation-mobile.jpg`
-- `assets/realisation-salon.png`
-- `assets/realisation-salon.jpg`
-- `assets/realisation-salon-card.jpg`
-- `assets/realisation-salon-mobile.jpg`
-- `assets/realisation-facade.png`
-- `assets/realisation-facade.jpg`
-- `assets/realisation-facade-card.jpg`
+Le numéro de téléphone et le lien WhatsApp sont des placeholders dans `data/site.ts`. Remplacez-les par les vraies coordonnées avant publication commerciale.
 
-Le site utilise les versions `.jpg`, plus légères pour GitHub Pages. Les fichiers `*-card.jpg` servent aux cartes de portfolio pour accélérer le chargement mobile. Pour les remplacer, gardez les mêmes noms de fichiers ou mettez à jour les chemins dans `index.html` et `styles.css`.
-
-## Formulaire
-
-Le formulaire bloque l'envoi réel pour l'instant et affiche un message de démonstration. Pour le connecter, remplacez la logique `submit` dans `script.js` par votre service préféré : email, CRM, Netlify Forms, Formspree ou backend maison.
-
-## Lancer le site
-
-Ouvrez simplement `index.html` dans un navigateur. Aucun build ni serveur n'est nécessaire.
-
-## Qualité automatique
-
-Les outils gratuits branchés sur GitHub Actions :
-
-- Prettier : formatage.
-- ESLint : erreurs JavaScript.
-- Stylelint : erreurs CSS.
-- HTMLHint : validation HTML.
-- Playwright : tests desktop/mobile.
-- Pa11y CI : accessibilité WCAG.
-- Lighthouse CI : performance, SEO, accessibilité, bonnes pratiques.
-- Lychee : vérification des liens.
-- CodeQL et Dependabot : sécurité.
-
-Commandes utiles :
+## Lancer localement
 
 ```bash
-npm run quality
-npm run a11y
-npm test
+npm install
+npm run serve
 ```
+
+Site local : `http://127.0.0.1:4173`
+
+## Qualité
+
+```bash
+npm run format
+npm run lint
+npm test
+npm run a11y
+npm run build
+```
+
+## Déploiement
+
+Le projet est prêt pour Vercel. GitHub Pages est aussi configuré via `.github/workflows/pages.yml` avec `GITHUB_PAGES=true`.

@@ -1,14 +1,30 @@
 const js = require("@eslint/js");
 const globals = require("globals");
+const tseslint = require("typescript-eslint");
+const reactHooks = require("eslint-plugin-react-hooks");
 
 module.exports = [
-  js.configs.recommended,
   {
-    files: ["script.js"],
+    ignores: [".next/**", "out/**", "node_modules/**"]
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    files: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}", "data/**/*.ts", "lib/**/*.ts"],
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: "script",
-      globals: globals.browser
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    },
+    plugins: {
+      "react-hooks": reactHooks
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }]
     }
   },
   {
@@ -20,6 +36,9 @@ module.exports = [
         ...globals.node,
         ...globals.browser
       }
+    },
+    rules: {
+      "@typescript-eslint/no-require-imports": "off"
     }
   }
 ];

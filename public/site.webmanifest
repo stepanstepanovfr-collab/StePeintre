@@ -2,11 +2,11 @@
   "name": "StePeintre",
   "short_name": "StePeintre",
   "description": "Peintre en bâtiment premium en Normandie.",
-  "start_url": "/StePeintre/",
-  "scope": "/StePeintre/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
-  "background_color": "#061526",
-  "theme_color": "#061526",
+  "background_color": "#252e46",
+  "theme_color": "#252e46",
   "icons": [
     {
       "src": "assets/favicon.svg",
