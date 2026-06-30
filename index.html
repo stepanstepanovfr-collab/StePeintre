@@ -73,6 +73,8 @@
       <img
         class="ambient-photo ambient-before"
         src="assets/chantier-transformation.jpg"
+        srcset="assets/chantier-transformation-card.jpg 760w, assets/chantier-transformation.jpg 1672w"
+        sizes="(max-width: 720px) 760px, 1672px"
         width="1672"
         height="941"
         fetchpriority="high"
@@ -81,8 +83,11 @@
       <img
         class="ambient-photo ambient-after"
         src="assets/realisation-salon.jpg"
+        srcset="assets/realisation-salon-card.jpg 760w, assets/realisation-salon.jpg 1448w"
+        sizes="(max-width: 720px) 760px, 1448px"
         width="1448"
         height="1086"
+        loading="lazy"
         decoding="async"
         alt=""
       />
@@ -213,6 +218,7 @@
             src="assets/realisation-salon.jpg"
             width="1448"
             height="1086"
+            loading="lazy"
             decoding="async"
             alt="Salon rénové avec peinture nette et finitions propres"
           />

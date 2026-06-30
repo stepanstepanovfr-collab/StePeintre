@@ -49,18 +49,18 @@ function setupLoader() {
 
   const finish = () => {
     document.body.classList.add("is-loaded");
-    window.setTimeout(() => loader.remove(), reduceMotion ? 20 : 520);
+    window.setTimeout(() => loader.remove(), reduceMotion ? 20 : 260);
   };
 
   if (document.readyState === "complete") {
-    window.setTimeout(finish, reduceMotion ? 0 : 420);
+    window.setTimeout(finish, reduceMotion ? 0 : 80);
   } else {
-    window.addEventListener("load", () => window.setTimeout(finish, reduceMotion ? 0 : 420), { once: true });
+    window.addEventListener("load", () => window.setTimeout(finish, reduceMotion ? 0 : 80), { once: true });
   }
 }
 
 function setupSplitText() {
-  const targets = document.querySelectorAll("h1, .section-heading h2");
+  const targets = document.querySelectorAll("h1");
 
   targets.forEach((target) => {
     if (target.dataset.splitText === "true") return;
