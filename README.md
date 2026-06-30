@@ -25,12 +25,15 @@ Les images temporaires sont :
 
 - `assets/chantier-transformation.png`
 - `assets/chantier-transformation.jpg`
+- `assets/chantier-transformation-card.jpg`
 - `assets/realisation-salon.png`
 - `assets/realisation-salon.jpg`
+- `assets/realisation-salon-card.jpg`
 - `assets/realisation-facade.png`
 - `assets/realisation-facade.jpg`
+- `assets/realisation-facade-card.jpg`
 
-Le site utilise les versions `.jpg`, plus légères pour GitHub Pages. Pour les remplacer, gardez les mêmes noms de fichiers ou mettez à jour les chemins dans `index.html` et `styles.css`.
+Le site utilise les versions `.jpg`, plus légères pour GitHub Pages. Les fichiers `*-card.jpg` servent aux cartes de portfolio pour accélérer le chargement mobile. Pour les remplacer, gardez les mêmes noms de fichiers ou mettez à jour les chemins dans `index.html` et `styles.css`.
 
 ## Formulaire
 

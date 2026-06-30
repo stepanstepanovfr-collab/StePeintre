@@ -38,7 +38,7 @@
       name="twitter:image"
       content="https://stepanstepanovfr-collab.github.io/StePeintre/assets/realisation-salon.jpg"
     />
-    <link rel="preload" as="image" href="assets/chantier-transformation.jpg" />
+    <link rel="preload" as="image" href="assets/chantier-transformation.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
@@ -70,8 +70,22 @@
 
     <div class="scroll-meter" aria-hidden="true"></div>
     <div class="ambient-room" aria-hidden="true">
-      <img class="ambient-photo ambient-before" src="assets/chantier-transformation.jpg" alt="" />
-      <img class="ambient-photo ambient-after" src="assets/realisation-salon.jpg" alt="" />
+      <img
+        class="ambient-photo ambient-before"
+        src="assets/chantier-transformation.jpg"
+        width="1672"
+        height="941"
+        fetchpriority="high"
+        alt=""
+      />
+      <img
+        class="ambient-photo ambient-after"
+        src="assets/realisation-salon.jpg"
+        width="1448"
+        height="1086"
+        decoding="async"
+        alt=""
+      />
       <div class="ambient-wall wall-damage"></div>
       <div class="ambient-wall wall-prep"></div>
       <div class="ambient-wall wall-primer"></div>
@@ -193,6 +207,9 @@
           <img
             class="comparison-image comparison-after"
             src="assets/realisation-salon.jpg"
+            width="1448"
+            height="1086"
+            decoding="async"
             alt="Salon rénové avec peinture nette et finitions propres"
           />
           <input type="range" min="0" max="100" value="56" aria-label="Comparer avant et après" data-comparison-range />
@@ -321,14 +338,28 @@
         <div class="portfolio-grid">
           <!-- Images temporaires générées pour la maquette : remplacer par les vraies photos client. -->
           <article class="portfolio-card portfolio-large reveal">
-            <img src="assets/realisation-salon.jpg" alt="Salon rénové avec mur bleu nuit et peinture beige lumineuse" />
+            <img
+              src="assets/realisation-salon-card.jpg"
+              width="760"
+              height="570"
+              loading="lazy"
+              decoding="async"
+              alt="Salon rénové avec mur bleu nuit et peinture beige lumineuse"
+            />
             <div>
               <span>Salon</span>
               <h3>Finition mate premium</h3>
             </div>
           </article>
           <article class="portfolio-card reveal">
-            <img src="assets/chantier-transformation.jpg" alt="Chantier intérieur protégé avec mur en préparation" />
+            <img
+              src="assets/chantier-transformation-card.jpg"
+              width="760"
+              height="428"
+              loading="lazy"
+              decoding="async"
+              alt="Chantier intérieur protégé avec mur en préparation"
+            />
             <div>
               <span>Préparation</span>
               <h3>Support repris avant peinture</h3>
@@ -336,7 +367,11 @@
           </article>
           <article class="portfolio-card reveal">
             <img
-              src="assets/realisation-facade.jpg"
+              src="assets/realisation-facade-card.jpg"
+              width="760"
+              height="570"
+              loading="lazy"
+              decoding="async"
               alt="Façade en rénovation peinture avec protections aux fenêtres"
             />
             <div>
